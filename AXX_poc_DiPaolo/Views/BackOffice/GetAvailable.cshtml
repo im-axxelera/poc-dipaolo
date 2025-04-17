@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AXX_poc_DiPaolo.Models.Request>
+
+@Html.Partial("_NavbarBackOffice")
+
+@{
+    ViewData["Title"] = "Available Requests";
+}
+
+<h2>Available Requests</h2>
+@if (Model != null && Model.Any())
+{
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>Tyre Dealer</th>
+                <th>Location</th>
+                <th>Request Date</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td>@r.TyreDealerCompany</td>
+                    <td>@r.Location</td>
+                    <td>@r.RequestDate.ToShortDateString()</td>
+                    <td>@r.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No available requests.</p>
+}

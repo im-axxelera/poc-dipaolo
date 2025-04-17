@@ -1,0 +1,10 @@
+﻿
+@Html.Partial("_NavbarTyreDealer")
+
+<h2>Create a New Request</h2>
+
+<form method="post" asp-action="PostCreate" asp-controller="TyreDealer">
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" min="1000" max="9500" required />
+    <button type="submit">Submit</button>
+</form>

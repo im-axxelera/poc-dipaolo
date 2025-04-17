@@ -1,0 +1,21 @@
+﻿@model List<AXX_poc_DiPaolo.Models.Request>
+
+@Html.Partial("_NavbarTyreDealer")
+
+<h2>Active Request</h2>
+
+@if (Model.Count > 0)
+{
+    @foreach (var r in Model)
+    {
+        <div>
+            <p><strong>Publication Date:</strong> @r.RequestDate.ToShortDateString()</p>
+
+            <p><strong>Quantity:</strong> @r.Quantity</p>
+        </div>
+    }
+}
+else
+{
+    <p>No active request.</p>
+}

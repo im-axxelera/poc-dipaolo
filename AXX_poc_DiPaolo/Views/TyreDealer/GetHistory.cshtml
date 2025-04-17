@@ -1,0 +1,46 @@
+﻿@model List<AXX_poc_DiPaolo.Models.Request>
+
+@* @{
+    ViewData["Title"] = "Request History";
+} *@
+
+@Html.Partial("_NavbarTyreDealer")
+
+<h2>Request History</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Request Date</th>
+                <th>Quantity</th>
+                <th>Weight</th>
+                <th>Transporter</th>
+                <th>Pickup Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td>@r.Location</td>
+                    <td>@r.RequestDate.ToShortDateString()</td>
+                    <td>@r.Quantity</td>
+                    <td>
+                        @(r.Weight.HasValue && r.Weight.Value > 0 ? $"{r.Weight} Kg" : "")
+                    </td>
+                    <td>@(r.TransporterCompany)</td>
+                    <td>@r.PickupDate?.ToShortDateString()</td>
+                    <td>@r.Status.ToString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No requests found.</p>
+}

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AXX_poc_DiPaolo.Models.Request>
+
+@Html.Partial("_NavbarBackOffice")
+
+<h2>In Progress Requests</h2>
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>Tyre Dealer</th>
+            <th>Location</th>
+            <th>Request Date</th>
+            <th>Quantity</th>
+            <th>Pickup Date</th>
+            <th>Transporter</th>
+            <th>Validation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.TyreDealerCompany</td>
+                <td>@r.Location</td>
+                <td>@r.RequestDate.ToShortDateString()</td>
+                <td>@r.Quantity</td>
+                <td>@(r.PickupDate?.ToShortDateString())</td>
+                <td>@r.TransporterCompany</td>
+                <td>
+                    <form method="post" asp-action="UpdateValidate" asp-controller="BackOffice">
+                        <input type="hidden" name="id" value="@r.Id" />
+                        <input type="number" name="quantity" value="@r.Quantity" hidden/>
+                        <button type="submit">Validate</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

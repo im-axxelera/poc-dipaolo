@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AXX_poc_DiPaolo.props" />
+</Project>

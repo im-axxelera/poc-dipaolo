@@ -1,0 +1,68 @@
+﻿@model AXX_poc_DiPaolo.Models.Interfaces.IUser
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form method="post" asp-controller="Account" asp-action="PostLogin">
+    <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" required/>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" required/>
+    </div>
+    <button type="submit">Login</button>
+</form>
+<p>
+<p>
+    {
+    "Username": "Tyre01",
+    "Password": "d1",
+    "Role": "TyreDealer"
+    },
+<p>
+    {
+    "Username": "Tyre02",
+    "Password": "d2",
+    "Role": "TyreDealer"
+    },
+<p>
+    {
+    "Username": "Tyre03",
+    "Password": "d3",
+    "Role": "TyreDealer"
+    },
+<p>
+    {
+    "Username": "Tyre04",
+    "Password": "d4",
+    "Role": "TyreDealer"
+    },
+<p>
+    {
+    "Username": "Trans01",
+    "Password": "t1",
+    "Role": "Transporter"
+    },
+<p>
+    {
+    "Username": "Trans02",
+    "Password": "t2",
+    "Role": "Transporter"
+    },
+<p>
+    {
+    "Username": "Trans03",
+    "Password": "t3",
+    "Role": "Transporter"
+    },
+<p>
+    {
+    "Username": "admin",
+    "Password": "admin",
+    "Role": "BackOffice"
+    }

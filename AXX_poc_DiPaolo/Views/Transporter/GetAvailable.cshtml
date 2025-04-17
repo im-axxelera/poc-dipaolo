@@ -1,0 +1,46 @@
+﻿@model List<AXX_poc_DiPaolo.Models.Request>
+
+@Html.Partial("_NavbarTransporter")
+
+@{
+    ViewData["Title"] = "Available Requests";
+}
+
+<h2>Available Requests</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>Tyre Dealer</th>
+                <th>Location</th>
+                <th>Request Date</th>
+                <th>Quantity</th>
+                <th>Assignment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td>@r.TyreDealerCompany</td>
+                    <td>@r.Location</td>
+                    <td>@r.RequestDate.ToShortDateString()</td>
+                    <td>@r.Quantity</td>
+                    <td>
+                        <form method="post" asp-action="PostAssign" asp-controller="Transporter">
+                            <input type="hidden" name="id" value="@r.Id" />
+                            <input type="date" name="pickupDate" required />
+                            <button type="submit">Assign</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No available requests.</p>
+}
